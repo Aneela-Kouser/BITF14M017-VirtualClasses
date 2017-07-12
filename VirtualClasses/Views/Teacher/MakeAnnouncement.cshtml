@@ -1,0 +1,30 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = "Make Announcement - " + Model.course.Title;
+}
+
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<hr />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="myriad-pro-font tab">Make an Announcement</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" method="post" action="/Teacher/Announce">
+            <div class="row tab">
+                <div class="form-group col-sm-4 tab">
+                    <label for="title" class="myriad-pro-font">Title</label>
+                    <input class="form-control myriad-pro-font" placeholder="Announcement Title" name="Title" type="text" />
+                </div>
+            </div>
+            <div class="row tab">
+                <div class="form-group">
+                    <label for="announcementbody" style="margin-left:15px;" class="myriad-pro-font">Announcement Body</label>
+                    <textarea class="form-control" style="width:84.5%;margin-left:15px" name="Body" id="announcementbody" placeholder="Announcement Body" rows="5"></textarea>
+                </div>
+            </div>
+            <button class="btn btn-default myriad-pro-font tab" type="submit">Announce</button>
+        </form>
+    </div>
+</div>

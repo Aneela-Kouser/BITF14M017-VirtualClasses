@@ -1,0 +1,70 @@
+﻿@model VirtualClasses.Models.ViewModels.ForgotPasswordViewModel
+@{
+    ViewBag.Title = "Complete Your Registration";
+}
+
+<div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="heading myriad-pro-font">Complete Your Registration</h1>
+            </div>
+            <div class="panel-body">
+                <p class="myriad-pro-font center">Check your Email for Email Confirmation PIN. If the Mail isn't in your Inbox, check your Spam too.</p>
+                <p class="myriad-pro-font center">Didn't recieve Email? <a href="/Home/ResendEmailConfirmation">Resend Confirmation Email</a></p>
+                <form id="comform" class="form-horizontal" method="post" action="/Home/CompleteRegistration">
+                    <br />
+
+                    @if (Model != null)
+                    {
+                        string cls = "alert";
+                        if (Model.IsMessageDanger)
+                        {
+                            cls += " alert-danger";
+                        }
+                        else
+                        {
+                            cls += " alert-success";
+                        }
+                        <div id="repassalertdiv" class="align-input">
+                            <div class="@cls" id="repassalert" role="alert">@Model.Message</div>
+                        </div>
+                    }
+                    
+                    <div id="pindiv" class="text-input align-input inner-addon left-addon">
+                        <i class="glyphicon glyphicon-tag"></i>
+                        <input id="pin" type="text" name="PIN" placeholder="Email Confirmation PIN" class="form-control" />
+                    </div>
+
+                    <div id="useralertdiv">
+                    </div>
+
+                    <div id="phonediv" class="inner-addon left-addon text-input align-input">
+                        <i class="glyphicon glyphicon-phone-alt"></i>
+                        <input id="pass" type="text" name="Phone" placeholder="Phone" class="form-control" />
+                    </div>
+
+                    <div id="passalertdiv">
+                    </div>
+
+                    <div id="webdiv" class="inner-addon left-addon text-input align-input">
+                        <i class="glyphicon glyphicon-globe"></i>
+                        <input id="pass" type="text" name="Website" placeholder="Website" class="form-control" />
+                    </div>
+
+                    <div id="passalertdiv">
+                    </div>
+
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary btn-lg align-input proceed">Proceed</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+
+</div>

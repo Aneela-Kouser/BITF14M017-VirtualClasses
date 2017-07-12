@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/vir.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/logo.png"/>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-account">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-header">
+                    <a class="navbar-brand brand-account black" href="/">
+                        <img src="~/Images/brand.png" alt="Virtual Classes"><br/>Virtual Classes
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    <hr />
+    <div class="container">
+        <p>&copy; 2015 Virtual Classes</p>
+        <br />
+    </div>
+    
+</body>
+</html>

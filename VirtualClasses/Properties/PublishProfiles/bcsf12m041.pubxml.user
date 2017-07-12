@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Ahmad\Documents\GitHub\VirtualClasses</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Data/VirtualClassesDB.mdf">
+      <publishTime>01/06/2016 22:48:13</publishTime>
+    </File>
+    <File Include="App_Data/VirtualClassesDB_log.ldf">
+      <publishTime>01/06/2016 22:48:13</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>12/30/2015 21:31:15</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>12/30/2015 21:31:11</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>12/30/2015 21:31:14</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>12/30/2015 21:31:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>12/30/2015 21:31:11</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>12/30/2015 21:31:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>12/30/2015 21:31:09</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>12/30/2015 21:31:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>12/30/2015 21:31:10</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>12/30/2015 21:31:10</publishTime>
+    </File>
+    <File Include="bin/VirtualClasses.dll">
+      <publishTime>01/06/2016 22:48:12</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>12/30/2015 21:31:16</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="Content/MyriadProLight.otf">
+      <publishTime>05/23/2015 04:49:39</publishTime>
+    </File>
+    <File Include="Content/MyriadProLight.ttf">
+      <publishTime>01/05/2016 01:20:16</publishTime>
+    </File>
+    <File Include="Content/MyriadProLight.woff">
+      <publishTime>01/04/2016 21:48:22</publishTime>
+    </File>
+    <File Include="Content/SaginawMedium.ttf">
+      <publishTime>05/23/2015 04:49:39</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>12/30/2015 21:30:40</publishTime>
+    </File>
+    <File Include="Content/user.css">
+      <publishTime>01/05/2016 15:39:12</publishTime>
+    </File>
+    <File Include="Content/vir.css">
+      <publishTime>01/06/2016 18:45:37</publishTime>
+    </File>
+    <File Include="favicon.ico">
+      <publishTime>12/30/2015 21:30:40</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="fonts/MyriadProLight.eot">
+      <publishTime>01/04/2016 21:48:22</publishTime>
+    </File>
+    <File Include="fonts/MyriadProLight.otf">
+      <publishTime>05/23/2015 04:49:39</publishTime>
+    </File>
+    <File Include="fonts/MyriadProLight.svg">
+      <publishTime>01/04/2016 21:48:20</publishTime>
+    </File>
+    <File Include="fonts/MyriadProLight.ttf">
+      <publishTime>01/04/2016 21:48:22</publishTime>
+    </File>
+    <File Include="fonts/MyriadProLight.woff">
+      <publishTime>01/04/2016 21:48:22</publishTime>
+    </File>
+    <File Include="fonts/SaginawMedium.ttf">
+      <publishTime>05/23/2015 04:49:39</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>12/30/2015 21:30:40</publishTime>
+    </File>
+    <File Include="Images/brand.png">
+      <publishTime>12/31/2015 15:57:46</publishTime>
+    </File>
+    <File Include="Images/jumbo.jpg">
+      <publishTime>01/01/2016 20:53:35</publishTime>
+    </File>
+    <File Include="Images/jumbo1.jpg">
+      <publishTime>01/01/2016 21:16:29</publishTime>
+    </File>
+    <File Include="Images/logo.png">
+      <publishTime>01/05/2016 03:06:39</publishTime>
+    </File>
+    <File Include="Models/DBHandler.cs">
+      <publishTime>01/06/2016 22:28:54</publishTime>
+    </File>
+    <File Include="Models/VirtualClassesLINQClasses.dbml">
+      <publishTime>01/05/2016 23:20:25</publishTime>
+    </File>
+    <File Include="Models/VirtualClassesLINQClasses.dbml.layout">
+      <publishTime>01/05/2016 23:20:25</publishTime>
+    </File>
+    <File Include="Models/VirtualClassesLINQClasses.designer.cs">
+      <publishTime>01/05/2016 23:20:25</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>12/30/2015 21:31:16</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>12/30/2015 21:30:53</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>12/30/2015 21:30:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.intellisense.js">
+      <publishTime>12/30/2015 21:31:07</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>12/30/2015 21:30:55</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>12/30/2015 21:30:55</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>12/30/2015 21:30:55</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>12/30/2015 21:31:12</publishTime>
+    </File>
+    <File Include="Scripts/NewAssignment.js">
+      <publishTime>01/05/2016 16:44:31</publishTime>
+    </File>
+    <File Include="Scripts/respond.js">
+      <publishTime>12/30/2015 21:31:16</publishTime>
+    </File>
+    <File Include="Scripts/respond.min.js">
+      <publishTime>12/30/2015 21:31:16</publishTime>
+    </File>
+    <File Include="Scripts/ScheduleQuiz.js">
+      <publishTime>01/05/2016 23:13:09</publishTime>
+    </File>
+    <File Include="Scripts/SignUp.js">
+      <publishTime>01/06/2016 19:43:35</publishTime>
+    </File>
+    <File Include="Scripts/_references.js">
+      <publishTime>01/06/2016 16:59:10</publishTime>
+    </File>
+    <File Include="Views/Home/ForgotPassword.cshtml">
+      <publishTime>01/02/2016 17:19:03</publishTime>
+    </File>
+    <File Include="Views/Home/Home.cshtml">
+      <publishTime>01/05/2016 22:13:14</publishTime>
+    </File>
+    <File Include="Views/Home/Login.cshtml">
+      <publishTime>01/05/2016 15:32:19</publishTime>
+    </File>
+    <File Include="Views/Home/NewPassword.cshtml">
+      <publishTime>01/02/2016 17:23:14</publishTime>
+    </File>
+    <File Include="Views/Home/ResetPassword.cshtml">
+      <publishTime>01/02/2016 17:20:34</publishTime>
+    </File>
+    <File Include="Views/Home/SignUp.cshtml">
+      <publishTime>01/06/2016 22:34:47</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>12/30/2015 21:30:40</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutAccounts.cshtml">
+      <publishTime>01/06/2016 17:33:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutHome.cshtml">
+      <publishTime>01/06/2016 20:49:14</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutTeacher.cshtml">
+      <publishTime>01/06/2016 20:49:33</publishTime>
+    </File>
+    <File Include="Views/Shared/_LayoutTeacherClass.cshtml">
+      <publishTime>01/05/2016 23:08:44</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Accounts.cshtml">
+      <publishTime>01/05/2016 02:58:25</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout_Home.cshtml">
+      <publishTime>01/05/2016 02:58:38</publishTime>
+    </File>
+    <File Include="Views/Teacher/AddNewClass.cshtml">
+      <publishTime>01/05/2016 16:01:52</publishTime>
+    </File>
+    <File Include="Views/Teacher/Class.cshtml">
+      <publishTime>01/05/2016 22:03:23</publishTime>
+    </File>
+    <File Include="Views/Teacher/EnrolledStudents.cshtml">
+      <publishTime>01/05/2016 16:16:40</publishTime>
+    </File>
+    <File Include="Views/Teacher/EnrollStudents.cshtml">
+      <publishTime>01/05/2016 16:12:53</publishTime>
+    </File>
+    <File Include="Views/Teacher/GiveAssignment.cshtml">
+      <publishTime>01/05/2016 16:45:18</publishTime>
+    </File>
+    <File Include="Views/Teacher/Home.cshtml">
+      <publishTime>01/05/2016 16:03:01</publishTime>
+    </File>
+    <File Include="Views/Teacher/MakeAnnouncement.cshtml">
+      <publishTime>01/05/2016 17:04:33</publishTime>
+    </File>
+    <File Include="Views/Teacher/Profile.cshtml">
+      <publishTime>01/05/2016 16:01:41</publishTime>
+    </File>
+    <File Include="Views/Teacher/QuizzesResult.cshtml">
+      <publishTime>01/05/2016 16:29:52</publishTime>
+    </File>
+    <File Include="Views/Teacher/ScheduleQuiz.cshtml">
+      <publishTime>01/05/2016 22:59:56</publishTime>
+    </File>
+    <File Include="Views/Teacher/StartDiscussion.cshtml">
+      <publishTime>01/05/2016 16:53:31</publishTime>
+    </File>
+    <File Include="Views/Teacher/_ViewStart.cshtml">
+      <publishTime>01/05/2016 16:00:31</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>12/30/2015 21:30:40</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>01/05/2016 15:27:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>01/06/2016 22:48:15</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,52 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+@{
+    ViewBag.Title = Model.solution.Quiz.Title + " - Result";
+}
+
+<h2 class="myriad-pro-font">@Model.solution.Quiz.Title - Result</h2>
+<p class="myriad-pro-font tab">
+    Total Questions: @Model.solution.Quiz.Questions.Count<br />
+    Attempted: @Model.solution.Attempted<br />
+    Correct: @Model.solution.Correct<br />
+    Total Marks: @Model.solution.Quiz.TotalMarks<br />
+    Obtained Marks: @Model.solution.Marks
+</p>
+<hr />
+
+@{
+    int i = 0;
+    foreach (var q in Model.solution.QuestionSolutions)
+    {
+        i++;
+        string ans = "Your Answer: " + q.SelectedOption.ToString();
+        if (q.IsCorrect)
+        {
+            ans += " (Correct)";
+        }
+        else
+        {
+            ans += " (Incorrect)";
+        }
+        if (q.SelectedOption == 0)
+        {
+            ans = "You didn't attempt this question. (Incorrect)";
+        }
+        string temp = q.Question.Question;
+        temp = temp.Replace("\r", "");
+        string[] tok = temp.Split('\n');
+        <h3 class="myriad-pro-font">Question # @i</h3>
+        <p class="myriad-pro-font tab">
+            @foreach (var abc in tok)
+            {
+                @abc<br />
+            }
+        </p>
+        <ol class="myriad-pro-font tab">
+            <li>@q.Question.OptionA</li>
+            <li>@q.Question.OptionB</li>
+            <li>@q.Question.OptionC</li>
+            <li>@q.Question.OptionD</li>
+        </ol>
+        <p class="myriad-pro-font tab">@ans</p>
+    }
+}

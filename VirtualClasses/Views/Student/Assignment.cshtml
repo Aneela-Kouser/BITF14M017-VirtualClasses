@@ -1,0 +1,17 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+@{
+    ViewBag.Title = Model.assignment.Title + " - " + Model.course.Title;
+}
+<h1 class="myriad-pro-font"><a href="/Student/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<h3 class="myriad-pro-font">@Model.assignment.Title</h3>
+<h4 class="myriad-pro-font">- @Model.assignment.Content</h4>
+@{
+    int i = 0;
+    foreach (var ques in Model.assignment.Questions)
+    {
+        i++;
+        <hr />
+        <h4 class="myriad-pro-font">Question @i</h4>
+        <p class="myriad-pro-font tab">@ques.Question</p>
+    }
+}

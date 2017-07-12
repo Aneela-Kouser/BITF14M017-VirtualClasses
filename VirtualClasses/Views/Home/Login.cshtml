@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<script src="~/Scripts/Login.js"></script>
+
+<div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="heading myriad-pro-font">Login</h1>
+            </div>
+            <div class="panel-body">
+                <form id="loginform" class="form-horizontal" method="post" action="/Home/Login">
+                    <br/>
+                    @if (Model == true)
+                    {
+                        <div id="genalertdiv" class="align-input">
+                            <div class="alert alert-danger" id="genalert" role="alert">Username or Password incorrect</div>
+                        </div>
+                    }
+                    
+                    <div id="usernamediv" class="text-input align-input inner-addon left-addon">
+                        <i class="glyphicon glyphicon-user"></i>
+                        <input id="user" type="text" name="Username" placeholder="Username" class="form-control" />
+                    </div>
+
+                    <div id="useralertdiv" class="align-input">
+                        <div class="alert alert-danger hidden" id="useralert" role="alert"></div>
+                    </div>
+
+                    <div id="passdiv" class="inner-addon left-addon text-input align-input">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <input id="pass" type="password" name="Password" placeholder="Password" class="form-control" />
+                    </div>
+
+                    <div id="passalertdiv" class="align-input">
+                        <div class="alert alert-danger hidden" id="passalert" role="alert"></div>
+                    </div>
+
+                    
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary btn-lg align-input">Login</button>
+                    </div>
+
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+
+</div>

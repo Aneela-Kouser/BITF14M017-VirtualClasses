@@ -1,0 +1,41 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+@{
+    ViewBag.Title = Model.course.Title;
+}
+
+<script src="~/Scripts/jquery.highlight-5.js"></script>
+<script src="~/Scripts/SearchStudent.js"></script>
+
+<div class="row">
+    <h1 class="myriad-pro-font"><a href="/Student/Class?Id=@Model.course.Id">@ViewBag.Title</a></h1>
+    <h4 class="myriad-pro-font tab">Instructor: @Model.course.Teacher.FirstName @Model.course.Teacher.LastName</h4>
+    @if (!Model.course.Active)
+    {
+        <p class="myriad-pro-font tab">@Model.course.Title is an Inactive Class.<br />You can't Start Discussions, comment on Discussions or Take Quizzes in an Inactive Class.</p>
+    }
+</div>
+
+@if (Model.course.Active)
+{
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="input-group">
+                <input type="text" id="searchtext" class="form-control" placeholder="Search in Quizzes, Assignments or Discussions" />
+                <span class="input-group-btn">
+                    <button id="searchbtn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+
+<div id="div1">
+    @if (Model.course.Active)
+    {
+        <hr />
+        <h3 class="myriad-pro-font">Discussions <small>(total @Model.course.Discussions.Count)</small></h3>
+        <ul>
+            <li><a class="myriad-pro-font tab" href="/Student/StartDiscussion">Start a Discussion</a></li>
+        </ul>
+    }
+</div>

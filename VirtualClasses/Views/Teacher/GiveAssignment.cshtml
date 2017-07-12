@@ -1,0 +1,34 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = "New Assignment - " + Model.course.Title;
+}
+
+<script src="~/Scripts/NewAssignment.js"></script>
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<hr />
+<h3 class="myriad-pro-font">Add New Assignment</h3>
+<hr />
+<br />
+<form class="form-horizontal myriad-pro-font" method="post" action="/Teacher/GiveAssignmentReq">
+    <div class="row tab">
+        <div class="form-group col-sm-4">
+            <label for="idtitle">Title</label>
+            <input type="text" class="form-control" placeholder="Assignment Title" name="Title" id="idtitle" />
+        </div>
+    </div>
+    <div class="row tab">
+        <div class="form-group col-sm-8">
+            <label for="idcontents">Description</label>
+            <input type="text" class="form-control" placeholder="Content" name="Content" id="idcontents" />
+        </div>
+    </div>
+    <div class="row tab">
+        <div class="form-group col-sm-4">
+            <label for="totalquestions">Total Questions</label>
+            <input type="text" class="form-control" name="totalquestions" id="idtotalquestions" />
+        </div>
+        <button class="btn btn-default set-total-questions-btn" id="totalquestionsbtn" type="button">Proceed</button>
+    </div>
+    <div id="idform">
+    </div>
+</form>

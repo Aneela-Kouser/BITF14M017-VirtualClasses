@@ -1,0 +1,284 @@
+@font-face{
+	font-family: 'SignawMedium';
+	src: url('../fonts/SaginawMedium.ttf');
+}
+
+@font-face{
+	font-family: 'MyriadProLight';
+    src: url('../fonts/MyriadProLight.eot');
+    src: url('../fonts/MyriadProLight.woff') format('woff'),
+         url('../fonts/MyriadProLight.ttf') format('truetype'),
+         url('../fonts/MyriadProLight.svg#MyriadProLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.panel{
+    opacity: 0.8;
+}
+
+.hidden{
+    display: none;
+}
+
+.proceed{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#fnamealertdiv, #lnamealertdiv, #useralertdiv, #emailalertdiv, #passalertdiv, #repassalertdiv, #genalertdiv, #emailconfirmdiv, #phonealertdiv, #webalertdiv{
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.align-input .alert{
+	height: auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+select{
+    height: 43px !important;
+    text-indent: 32px;
+}
+
+.sign-up-here{
+    margin-top: 10px;
+}
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon .glyphicon {
+	font-size: 20px;
+	opacity: 0.5;
+	position: absolute;
+	padding: 10px;
+	pointer-events: none;
+}
+
+.inner-addon i{
+	margin-left: 4px;
+}
+
+/* align icon */
+.left-addon .glyphicon  {
+	left:  0px;
+}
+
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input { padding-left:  48px; }
+.right-addon input { padding-right: 48px; }
+
+
+.navbar-account {
+    position: relative;
+}
+.brand-account {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+}
+
+.navbar-brand{
+	font-family: SignawMedium;
+}
+
+.nav{
+	margin-top:35px;
+}
+
+.navbar-nav li{
+	margin-right: 8px;
+}
+
+.navbar{
+	height: 100px !important;
+}
+
+.page-body{
+	margin-top:100px !important;
+}
+
+.black{
+	color:black;
+}
+
+.less-opacity{
+	opacity:0.5;
+}
+
+.center{
+	text-align:center;
+}
+
+.myriad-pro-font{
+	font-family: MyriadProLight;
+}
+
+.heading{
+	color:black;
+	font-size: 150%;
+	text-align:center;
+}
+
+.heading-bold{
+	color:black;
+	font-size: 200%;
+	text-align:center;
+	font-family: SignawMedium;
+}
+
+.text-input{
+	font-family: MyriadProLight;
+	height: 45px !important;
+}
+
+input{
+	height: 45px !important;
+}
+
+.form-inline input{
+	max-width: 49.5% !important;
+}
+
+@media (min-width: 768px) and (max-width: 800px){
+	.navbar-right-side{position: absolute !important; left: 75% !important;}
+	.navbar-left-side{position: absolute !important; left: 5% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; }
+}
+
+@media (min-width: 801px) and (max-width: 850px){
+	.navbar-right-side{position: absolute !important; left: 75% !important;}
+	.navbar-left-side{position: absolute !important; left: 5% !important;}
+	.sign-up { position: absolute !important; right: -10% !important; }
+}
+
+@media (min-width: 851px) and (max-width: 900px){
+	.navbar-right-side{position: absolute !important; left: 75% !important;}
+	.navbar-left-side{position: absolute !important; left: 5% !important;}
+	.sign-up { position: absolute !important; right: -5% !important; }
+}
+
+@media (min-width: 901px) and (max-width: 950px){
+	.navbar-right-side{position: absolute !important; left: 75% !important;}
+	.navbar-left-side{position: absolute !important; left: 5% !important;}
+	.sign-up { position: absolute !important; right: 0% !important; }
+}
+
+@media (min-width: 951px) and (max-width: 994px){
+	.navbar-right-side{position: absolute !important; left: 75% !important;}
+	.navbar-left-side{position: absolute !important; left: 5% !important;}
+	.sign-up { position: absolute !important; right: 5% !important; }
+}
+
+@media (min-width: 299px) and (max-width: 350px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -72% !important;}
+	.carousel{margin-top:100px !important;}
+}
+
+@media (min-width: 351px) and (max-width: 400px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -65% !important;}
+	.carousel{margin-top:100px !important;}
+}
+
+@media (min-width: 401px) and (max-width: 450px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -50% !important;}
+	.carousel{margin-top:100px !important;}
+}
+
+@media (min-width: 451px) and (max-width: 500px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -35% !important;}
+}
+
+@media (min-width: 501px) and (max-width: 550px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -20% !important;}
+}
+
+@media (min-width: 551px) and (max-width: 600px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: -5% !important;}
+}
+
+@media (min-width: 601px) and (max-width: 650px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: 10% !important;}
+}
+
+@media (min-width: 651px) and (max-width: 700px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: 25% !important;}
+}
+
+@media (min-width: 701px) and (max-width: 740px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: 35% !important;}
+}
+
+@media (min-width: 741px) and (max-width: 767px){
+	.navbar-right-side{position: absolute !important; left: 75% !important; right: 20% !important;}
+	.navbar-left-side{position: absolute !important; left: 0% !important;}
+	.sign-up { position: absolute !important; right: -15% !important; top: 0% !important;}
+	.login{right: 165% !important;}
+	.navbar-nav li{margin-right: 41% !important;}
+}
+
+
+.font-big{
+	font-size: 125%;
+}
+
+.right{
+	text-align: right;
+}
+
+.align-input{
+	margin-left: 20px !important;
+	margin-right: 20px !important;
+}
+
+ul
+{
+    list-style-type: none;
+}

@@ -1,0 +1,113 @@
+﻿@model VirtualClasses.Models.Teacher
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/user.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/logo.png" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <img src="~/Images/back.jpg" style="top:0px;left:0px;height:100%;width:100%;position:fixed;opacity:0.12;" />abc
+    <div class="page-body">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <a class="navbar-brand" href="/Teacher/Home">Virtual Classes</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Teacher/Profile">@Model.FirstName @Model.LastName</a></li>
+                        <li><a href="/Teacher/Home">Home</a></li>
+                        <li class="dropdown">
+                            <a class="navbar-icon dropdown-toggle" id="settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-cog"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="settings">
+                                <li><a href="/Teacher/AddNewClass">Add new class</a></li>
+                                <li class="divider"></li>
+                                <li><a href="/Teacher/Profile">Profile</a></li>
+                                <li><a href="/Teacher/ChangePassword">Change Password</a></li>
+                                <li><a href="/Teacher/Logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="container-fluid">
+                <div class="row">
+
+                    <nav id="side" class="col-xs-3 bs-docs-sidebar">
+                        <ul id="sidebar" class="nav nav-stacked fixed">
+
+                            <li class="active">
+                                <a>Active Classes</a>
+                                <ul class="nav nav-stacked">
+                                    @{
+                                        List<VirtualClasses.Models.Course> active = (from x in Model.Courses
+                                                                                     where x.Active
+                                                                                     select x).ToList();
+                                        if (active.Count == 0)
+                                        {
+                                            <li><a>No Active Classes</a></li>
+                                        }
+                                        else
+                                        {
+                                            foreach (var c in active)
+                                            {
+                                                <li><a href="/Teacher/Class?Id=@c.Id">@c.Title</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Inactive Classes</a>
+                                <ul class="nav nav-stacked">
+                                    @{
+                                        List<VirtualClasses.Models.Course> inactive = (from x in Model.Courses
+                                                                                       where x.Active == false
+                                                                                       select x).ToList();
+                                        if (inactive.Count == 0)
+                                        {
+                                            <li><a>No Inactive Classes</a></li>
+                                        }
+                                        else
+                                        {
+                                            foreach (var c in inactive)
+                                            {
+                                                <li><a href="/Teacher/Class?Id=@c.Id">@c.Title</a></li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="col-xs-7 page-right">
+                        
+                        @RenderBody()
+
+                        <hr />
+                        <p>&copy; @DateTime.Now.Year - Virtual Classes</p>
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

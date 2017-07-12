@@ -1,0 +1,74 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = Model.course.Title;
+}
+
+<script src="~/Scripts/jquery.highlight-5.js"></script>
+<script src="~/Scripts/SearchTeacher.js"></script>
+
+<div class="row">
+    <h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@ViewBag.Title</a></h1>
+    @if (Model.course.Active)
+    {
+        <h5 class="myriad-pro-font tab"><a href="/Teacher/MarkInactive">Mark Inactive</a></h5>
+    }
+    else
+    {
+        <p class="myriad-pro-font tab">You can't Enroll Students, Schedule Quizzes, Give Assignments, Make Announcements <br />or Start Discussions in an Inactive Class.</p>
+        <h5 class="myriad-pro-font tab"><a href="/Teacher/MarkActive">Mark Active</a></h5>
+    }
+</div>
+
+@if (Model.course.Active)
+{
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="input-group">
+                <input type="text" id="searchtext" class="form-control" placeholder="Search in Quizzes, Assignments or Discussions" />
+                <span class="input-group-btn">
+                    <button id="searchbtn" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+    </div>
+}
+
+<hr />
+<div id="div1">
+    <h3 class="myriad-pro-font">Students <small>(total @Model.course.Students.Count)</small></h3>
+    <ul>
+        @if (Model.course.Active)
+        {
+            <li><a class="myriad-pro-font tab" href="/Teacher/EnrollStudents">Enroll Student<small>(s)</small></a></li>
+        }
+        <li><a class="myriad-pro-font tab" href="/Teacher/EnrolledStudents">See all Enrolled Students</a></li>
+    </ul>
+
+    <hr />
+    <h3 class="myriad-pro-font">Quizzes <small>(total @Model.course.Quizzes.Count)</small></h3>
+    <ul>
+        @if (Model.course.Active)
+        {
+            <li><a class="myriad-pro-font tab" href="/Teacher/ScheduleQuiz">Schedule a Quiz</a></li>
+        }
+        <li><a class="myriad-pro-font tab" href="/Teacher/QuizzesResult">See All Quizzes Result</a></li>
+    </ul>
+    @if (Model.course.Active)
+    {
+        <hr />
+        <h3 class="myriad-pro-font">Assignments <small>(total @Model.course.Assignments.Count)</small></h3>
+        <ul>
+            <li><a class="myriad-pro-font tab" href="/Teacher/GiveAssignment">Give an Assignment</a></li>
+        </ul>
+        <hr />
+        <h3 class="myriad-pro-font">Announcements <small>(total @Model.course.Announcements.Count)</small></h3>
+        <ul>
+            <li><a class="myriad-pro-font tab" href="/Teacher/MakeAnnouncement">Make an Announcement</a></li>
+        </ul>
+        <hr />
+        <h3 class="myriad-pro-font">Discussions <small>(total @Model.course.Discussions.Count)</small></h3>
+        <ul>
+            <li><a class="myriad-pro-font tab" href="/Teacher/StartDiscussion">Start a Discussion</a></li>
+        </ul>
+    }
+</div>

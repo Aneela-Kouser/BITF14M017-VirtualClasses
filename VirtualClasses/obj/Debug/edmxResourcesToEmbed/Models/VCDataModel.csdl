@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="VCDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="VCDataModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Students" EntityType="VCDataModel.Student" />
+    <EntitySet Name="Teachers" EntityType="VCDataModel.Teacher" />
+    <EntitySet Name="Courses" EntityType="VCDataModel.Course" />
+    <EntitySet Name="Quizs" EntityType="VCDataModel.Quiz" />
+    <AssociationSet Name="CourseTeacher" Association="VCDataModel.CourseTeacher">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Teacher" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="CourseStudent" Association="VCDataModel.CourseStudent">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="CourseQuiz" Association="VCDataModel.CourseQuiz">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Quiz" EntitySet="Quizs" />
+    </AssociationSet>
+    <EntitySet Name="QuizQuestions" EntityType="VCDataModel.QuizQuestion" />
+    <AssociationSet Name="QuizQuizQuestion" Association="VCDataModel.QuizQuizQuestion">
+      <End Role="Quiz" EntitySet="Quizs" />
+      <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+    </AssociationSet>
+    <EntitySet Name="QuizSolutions" EntityType="VCDataModel.QuizSolution" />
+    <AssociationSet Name="QuizQuizSolution" Association="VCDataModel.QuizQuizSolution">
+      <End Role="Quiz" EntitySet="Quizs" />
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+    </AssociationSet>
+    <EntitySet Name="QuizQuestionSolutions" EntityType="VCDataModel.QuizQuestionSolution" />
+    <AssociationSet Name="QuizSolutionStudent" Association="VCDataModel.QuizSolutionStudent">
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="QuizSolutionQuizQuestionSolution" Association="VCDataModel.QuizSolutionQuizQuestionSolution">
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+      <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+    </AssociationSet>
+    <AssociationSet Name="QuizQuestionQuizQuestionSolution" Association="VCDataModel.QuizQuestionQuizQuestionSolution">
+      <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+      <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+    </AssociationSet>
+    <EntitySet Name="Assignments" EntityType="VCDataModel.Assignment" />
+    <AssociationSet Name="CourseAssignment" Association="VCDataModel.CourseAssignment">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Assignment" EntitySet="Assignments" />
+    </AssociationSet>
+    <EntitySet Name="AssignmentQuestions" EntityType="VCDataModel.AssignmentQuestion" />
+    <AssociationSet Name="AssignmentAssignmentQuestion" Association="VCDataModel.AssignmentAssignmentQuestion">
+      <End Role="Assignment" EntitySet="Assignments" />
+      <End Role="AssignmentQuestion" EntitySet="AssignmentQuestions" />
+    </AssociationSet>
+    <EntitySet Name="Announcements" EntityType="VCDataModel.Announcement" />
+    <AssociationSet Name="CourseAnnouncement" Association="VCDataModel.CourseAnnouncement">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Announcement" EntitySet="Announcements" />
+    </AssociationSet>
+    <EntitySet Name="Discussions" EntityType="VCDataModel.Discussion" />
+    <AssociationSet Name="CourseDiscussion" Association="VCDataModel.CourseDiscussion">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Discussion" EntitySet="Discussions" />
+    </AssociationSet>
+    <EntitySet Name="DiscussionComments" EntityType="VCDataModel.DiscussionComment" />
+    <AssociationSet Name="DiscussionDiscussionComment" Association="VCDataModel.DiscussionDiscussionComment">
+      <End Role="Discussion" EntitySet="Discussions" />
+      <End Role="DiscussionComment" EntitySet="DiscussionComments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="true" />
+    <Property Name="LastName" Type="String" Nullable="true" />
+    <Property Name="Username" Type="String" Nullable="true" />
+    <Property Name="Password" Type="String" Nullable="true" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="VCDataModel.CourseStudent" FromRole="Student" ToRole="Course" />
+    <NavigationProperty Name="QuizSolutions" Relationship="VCDataModel.QuizSolutionStudent" FromRole="Student" ToRole="QuizSolution" />
+    <Property Name="Gender" Type="String" Nullable="true" />
+    <Property Name="Mobile" Type="String" Nullable="true" />
+    <Property Name="Website" Type="String" Nullable="true" />
+    <Property Name="PasswordResetPIN" Type="String" Nullable="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="EmailConfirmationPIN" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" />
+    <Property Name="Email" Type="String" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="VCDataModel.CourseTeacher" FromRole="Teacher" ToRole="Course" />
+    <Property Name="Gender" Type="String" Nullable="false" />
+    <Property Name="Mobile" Type="String" Nullable="true" />
+    <Property Name="Website" Type="String" Nullable="true" />
+    <Property Name="PasswordResetPIN" Type="String" Nullable="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="EmailConfirmationPIN" Type="String" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="VCDataModel.CourseTeacher" FromRole="Course" ToRole="Teacher" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="VCDataModel.CourseStudent" FromRole="Course" ToRole="Student" />
+    <NavigationProperty Name="Quizzes" Relationship="VCDataModel.CourseQuiz" FromRole="Course" ToRole="Quiz" />
+    <NavigationProperty Name="Assignments" Relationship="VCDataModel.CourseAssignment" FromRole="Course" ToRole="Assignment" />
+    <NavigationProperty Name="Announcements" Relationship="VCDataModel.CourseAnnouncement" FromRole="Course" ToRole="Announcement" />
+    <NavigationProperty Name="Discussions" Relationship="VCDataModel.CourseDiscussion" FromRole="Course" ToRole="Discussion" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quiz">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="VCDataModel.CourseQuiz" FromRole="Quiz" ToRole="Course" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Content" Type="String" Nullable="true" />
+    <Property Name="TotalMarks" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Questions" Relationship="VCDataModel.QuizQuizQuestion" FromRole="Quiz" ToRole="QuizQuestion" />
+    <NavigationProperty Name="Solutions" Relationship="VCDataModel.QuizQuizSolution" FromRole="Quiz" ToRole="QuizSolution" />
+  </EntityType>
+  <Association Name="CourseTeacher">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="*" />
+    <End Type="VCDataModel.Teacher" Role="Teacher" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseStudent">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="*" />
+    <End Type="VCDataModel.Student" Role="Student" Multiplicity="*" />
+  </Association>
+  <Association Name="CourseQuiz">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuizQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" Nullable="false" />
+    <Property Name="OptionA" Type="String" Nullable="false" />
+    <Property Name="OptionB" Type="String" Nullable="false" />
+    <Property Name="OptionC" Type="String" Nullable="false" />
+    <Property Name="OptionD" Type="String" Nullable="false" />
+    <Property Name="CorrectOption" Type="Int32" Nullable="false" />
+    <Property Name="Marks" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Quiz" Relationship="VCDataModel.QuizQuizQuestion" FromRole="QuizQuestion" ToRole="Quiz" />
+    <Property Name="QuizId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Solutions" Relationship="VCDataModel.QuizQuestionQuizQuestionSolution" FromRole="QuizQuestion" ToRole="QuizQuestionSolution" />
+  </EntityType>
+  <Association Name="QuizQuizQuestion">
+    <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="1" />
+    <End Type="VCDataModel.QuizQuestion" Role="QuizQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestion">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuizSolution">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Quiz" Relationship="VCDataModel.QuizQuizSolution" FromRole="QuizSolution" ToRole="Quiz" />
+    <Property Name="QuizId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="VCDataModel.QuizSolutionStudent" FromRole="QuizSolution" ToRole="Student" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="QuestionSolutions" Relationship="VCDataModel.QuizSolutionQuizQuestionSolution" FromRole="QuizSolution" ToRole="QuizQuestionSolution" />
+    <Property Name="Correct" Type="Int32" Nullable="false" />
+    <Property Name="Marks" Type="Int32" Nullable="false" />
+    <Property Name="Attempted" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="QuizQuizSolution">
+    <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="1" />
+    <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizSolution">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="QuizQuestionSolution">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SelectedOption" Type="Int32" Nullable="true" />
+    <NavigationProperty Name="QuizSolution" Relationship="VCDataModel.QuizSolutionQuizQuestionSolution" FromRole="QuizQuestionSolution" ToRole="QuizSolution" />
+    <Property Name="QuizSolutionId" Type="Int32" Nullable="false" />
+    <Property Name="IsCorrect" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Question" Relationship="VCDataModel.QuizQuestionQuizQuestionSolution" FromRole="QuizQuestionSolution" ToRole="QuizQuestion" />
+    <Property Name="QuizQuestionId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="QuizSolutionStudent">
+    <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="*" />
+    <End Type="VCDataModel.Student" Role="Student" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizSolution">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizSolutionQuizQuestionSolution">
+    <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="1" />
+    <End Type="VCDataModel.QuizQuestionSolution" Role="QuizQuestionSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizSolution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestionSolution">
+        <PropertyRef Name="QuizSolutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizQuestionQuizQuestionSolution">
+    <End Type="VCDataModel.QuizQuestion" Role="QuizQuestion" Multiplicity="1" />
+    <End Type="VCDataModel.QuizQuestionSolution" Role="QuizQuestionSolution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizQuestion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestionSolution">
+        <PropertyRef Name="QuizQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Course" Relationship="VCDataModel.CourseAssignment" FromRole="Assignment" ToRole="Course" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Content" Type="String" Nullable="false" />
+    <NavigationProperty Name="Questions" Relationship="VCDataModel.AssignmentAssignmentQuestion" FromRole="Assignment" ToRole="AssignmentQuestion" />
+  </EntityType>
+  <Association Name="CourseAssignment">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="VCDataModel.Assignment" Role="Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="AssignmentQuestion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" Nullable="false" />
+    <NavigationProperty Name="Assignment" Relationship="VCDataModel.AssignmentAssignmentQuestion" FromRole="AssignmentQuestion" ToRole="Assignment" />
+    <Property Name="AssignmentId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="AssignmentAssignmentQuestion">
+    <End Type="VCDataModel.Assignment" Role="Assignment" Multiplicity="1" />
+    <End Type="VCDataModel.AssignmentQuestion" Role="AssignmentQuestion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assignment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssignmentQuestion">
+        <PropertyRef Name="AssignmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="VCDataModel.CourseAnnouncement" FromRole="Announcement" ToRole="Course" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="CourseAnnouncement">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="VCDataModel.Announcement" Role="Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Discussion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="VCDataModel.CourseDiscussion" FromRole="Discussion" ToRole="Course" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comments" Relationship="VCDataModel.DiscussionDiscussionComment" FromRole="Discussion" ToRole="DiscussionComment" />
+    <Property Name="Username" Type="String" Nullable="false" />
+    <Property Name="FullName" Type="String" Nullable="false" />
+    <Property Name="Time" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="CourseDiscussion">
+    <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+    <End Type="VCDataModel.Discussion" Role="Discussion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Discussion">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DiscussionComment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Body" Type="String" Nullable="false" />
+    <NavigationProperty Name="Discussion" Relationship="VCDataModel.DiscussionDiscussionComment" FromRole="DiscussionComment" ToRole="Discussion" />
+    <Property Name="DiscussionId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" />
+    <Property Name="FullName" Type="String" Nullable="false" />
+    <Property Name="Time" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="DiscussionDiscussionComment">
+    <End Type="VCDataModel.Discussion" Role="Discussion" Multiplicity="1" />
+    <End Type="VCDataModel.DiscussionComment" Role="DiscussionComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discussion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscussionComment">
+        <PropertyRef Name="DiscussionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

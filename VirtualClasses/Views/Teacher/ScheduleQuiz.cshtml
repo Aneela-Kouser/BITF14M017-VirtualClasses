@@ -1,0 +1,39 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = "Schedule Quiz - " + Model.course.Title;
+}
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<hr />
+<h3 class="myriad-pro-font">Schedule a New Quiz</h3>
+<hr />
+<br />
+<form class="form-horizontal myriad-pro-font" method="post" action="/Teacher/ScheduleQuizReq">
+    <div class="row tab">
+        <div class="form-group col-sm-4">
+            <label for="idtitle">Title</label>
+            <input type="text" class="form-control" placeholder="Quiz Title" name="Title" id="idtitle" />
+        </div>
+    </div>
+    <div class="row tab">
+        <div class="form-group col-sm-8">
+            <label for="idcontents">Description</label>
+            <input type="text" class="form-control" placeholder="Content" name="Content" id="idcontents" />
+        </div>
+    </div>
+    <div class="row tab">
+        <div class="form-group col-sm-4">
+            <label for="idtotalquestions">Total Questions</label>
+            <input type="text" class="form-control" name="TotalQuestions" placeholder="Total Questions" id="idtotalquestions" />
+        </div>
+        <button class="btn btn-default set-total-questions-btn" id="totalquestionsbtn" type="button">Proceed</button>
+    </div>
+    @if (ViewBag.IsWrongTotal != null && ViewBag.IsWrongTotal == true)
+    {
+        <div id="quesalertdiv" class="align-input">
+            <div class="alert alert-danger" style="margin-left:20px; width:29%;" id="quesalert" role="alert">Invalid Total Questions</div>
+        </div> 
+    }
+    <div id="idform">
+    </div>
+</form>
+<script src="~/Scripts/ScheduleQuiz.js"></script>

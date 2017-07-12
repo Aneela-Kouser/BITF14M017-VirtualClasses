@@ -1,0 +1,94 @@
+﻿@model VirtualClasses.Models.Student
+@{
+    ViewBag.Title = Model.FirstName + " " + Model.LastName;
+}
+
+@{
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h1 class="myriad-pro-font">@Model.FirstName @Model.LastName</h1>
+<div class="tab">
+    <br />
+    <h5 class="myriad-pro-font">BASIC INFORMATION</h5>
+    <hr class="line" />
+
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="myriad-pro-font less-opacity">
+                First Name<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font less-opacity">
+                Last Name<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font less-opacity">
+                Gender<br /><hr class="line" />
+            </p>
+        </div>
+        <div class="col-sm-8">
+            <p class="myriad-pro-font">
+                @Model.FirstName<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font">
+                @Model.LastName<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font">
+                @Model.Gender<br /><hr class="line" />
+            </p>
+        </div>
+    </div>
+
+    <br />
+    <h5 class="myriad-pro-font">CONTACT INFORMATION</h5>
+    <hr class="line" />
+
+    <div class="row">
+        <div class="col-sm-4">
+            <p class="myriad-pro-font less-opacity">
+                Mobile Phone<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font less-opacity">
+                Email<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font less-opacity">
+                Website<br /><hr class="line" />
+            </p>
+            <p class="myriad-pro-font less-opacity">
+                Username<br /><hr class="line" />
+            </p>
+        </div>
+        <div class="col-sm-8">
+            @if (Model.Mobile == null)
+            {
+                <p class="myriad-pro-font">
+                    No Mobile Phone Added<br /><hr class="line" />
+                </p>
+            }
+            else
+            {
+                <p class="myriad-pro-font">
+                    @Model.Mobile<br /><hr class="line" />
+                </p>
+            }
+            <p class="myriad-pro-font">
+                @Model.Email<br /><hr class="line" />
+            </p>
+            @if (Model.Website == null)
+            {
+                <p class="myriad-pro-font">
+                    No Website<br /><hr class="line" />
+                </p>
+            }
+            else
+            {
+                <p class="myriad-pro-font">
+                    <a href="@Model.Website">@Model.Website</a><br /><hr class="line" />
+                </p>
+            }
+            <p class="myriad-pro-font">
+                @Model.Username<br /><hr class="line" />
+            </p>
+        </div>
+    </div>
+
+</div>

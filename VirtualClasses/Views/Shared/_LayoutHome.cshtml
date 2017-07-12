@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/vir.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/logo.png" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <img src="~/Images/back.jpg" style="top:0px;left:0px;height:100%;width:100%;position:fixed;opacity:0.12;z-index:-1" />
+    <div style="z-index:0">
+        <div class="navbar navbar-fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="navbar-header col-sm-10 navbar-left-side">
+                        <a class="navbar-brand black" href="/">
+                            <img src="~/Images/brand.png" alt="Virtual Classes">Virtual Classes
+                        </a>
+                    </div>
+
+                    <ul class="nav navbar-nav col-sm-2 navbar-right-side">
+                        <li class="login"><button type="submit" onclick="location.href='/Home/Login';" class="btn btn-default navbar-btn myriad-pro-font">Login</button></li>
+                        <li class="sign-up"><button type="button" onclick="location.href='/Home/SignUp'" class="btn btn-default navbar-btn myriad-pro-font">Sign Up</button></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        
+        @RenderBody()
+
+        <hr />
+        <div class="container">
+            <p>&copy; @DateTime.Now.Year - Virtual Classes</p>
+            <br />
+        </div>
+    </div>
+    
+</body>
+</html>

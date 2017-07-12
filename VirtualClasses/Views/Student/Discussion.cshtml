@@ -1,0 +1,56 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+@{
+    ViewBag.Title = Model.discussion.Title + " - " + Model.course.Title;
+}
+
+<script src="~/Scripts/StudentDiscussion.js"></script>
+<h1 class="myriad-pro-font"><a href="/Student/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<br /><br />
+<div class="media">
+    <div class="media-left">
+        <span class="media-object glyphicon glyphicon-user" style="font-size:64px;opacity:0.4;"></span>
+    </div>
+    <div class="media-body">
+        <h4 class="media-heading myriad-pro-font">@Model.discussion.Title <small class="tab">@Model.discussion.Time</small></h4>
+        <p class="myriad-pro-font" style="margin-top:-5px;margin-left:27px;"><small>by @Model.discussion.FullName (&commat;@Model.discussion.Username)</small></p>
+        <p class="myriad-pro-font">@Model.discussion.Body</p>
+        <hr />
+        <ul id="comments" class="media-list">
+            @if (Model.discussion.Comments.Count == 0)
+            {
+                <li class="media">
+                    <div class="media-body">
+                        <p class="myriad-pro-font">No Comments</p>
+                    </div>
+                </li>
+            }
+            else
+            {
+                foreach (var comment in Model.discussion.Comments)
+                {
+                    <li class="media">
+                        <div class="media-left">
+                            <span class="media-object glyphicon glyphicon-comment" style="font-size:22px;opacity:0.4;margin-top:11px;"></span>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="myriad-pro-font"><small>@comment.FullName (&commat;@comment.Username) says:</small></h4>
+                            <p class="myriad-pro-font" style="margin-top:-12px"><small>@comment.Time</small></p>
+                            <p class="myriad-pro-font">@comment.Body</p>
+                        </div>
+                    </li>
+                }
+            }
+
+        </ul>
+        <div id="abc">
+            <div class="media">
+                <div class="media-body">
+                    <div class="form-inline">
+                        <input id="commentid" type="text" placeholder="Say Something" style="width:65%;height:30px;font-size:12px" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

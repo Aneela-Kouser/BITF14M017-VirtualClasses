@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VirtualClassesDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="VirtualClassesDBModelStoreContainer">
+    <EntitySet Name="Teachers" EntityType="VirtualClassesDBModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Students" EntityType="VirtualClassesDBModel.Store.Students" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Courses" EntityType="VirtualClassesDBModel.Store.Courses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StudentCourse" EntityType="VirtualClassesDBModel.Store.StudentCourse" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_StudentCourse_Student" Association="VirtualClassesDBModel.Store.FK_StudentCourse_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentCourse" EntitySet="StudentCourse" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourse_Course" Association="VirtualClassesDBModel.Store.FK_StudentCourse_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="StudentCourse" EntitySet="StudentCourse" />
+    </AssociationSet>
+    <AssociationSet Name="TeacherCourse" Association="VirtualClassesDBModel.Store.TeacherCourse">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="FirstName" Type="varchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TeacherUsername" Type="varchar" Nullable="false" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="StudentCourse">
+    <Key>
+      <PropertyRef Name="Students_Username" />
+      <PropertyRef Name="Courses_Id" />
+    </Key>
+    <Property Name="Students_Username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Courses_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TeacherCourse">
+    <End Role="Teacher" Type="VirtualClassesDBModel.Store.Teachers" Multiplicity="1" />
+    <End Role="Course" Type="VirtualClassesDBModel.Store.Courses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TeacherUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourse_Student">
+    <End Role="Student" Type="VirtualClassesDBModel.Store.Students" Multiplicity="1" />
+    <End Role="StudentCourse" Type="VirtualClassesDBModel.Store.StudentCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="StudentCourse">
+        <PropertyRef Name="Students_Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourse_Course">
+    <End Role="StudentCourse" Type="VirtualClassesDBModel.Store.StudentCourse" Multiplicity="*" />
+    <End Role="Course" Type="VirtualClassesDBModel.Store.Courses" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCourse">
+        <PropertyRef Name="Courses_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

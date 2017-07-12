@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "SignUp";
+}
+<script src="~/Scripts/SignUp.js"></script>
+<div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="heading myriad-pro-font">Sign Up</h1>
+            </div>
+            <div class="panel-body">
+                <form id="signupform" class="form-horizontal" method="post" action="/Home/SignUp">
+                    <div id="fnamediv" class="text-input align-input left-addon">
+                        <input id="fname" type="text" name="FirstName" placeholder="First Name" class="form-control" value="@ViewBag.Data.FirstName" />
+                    </div>
+                    <div id="lnamediv" class="text-input align-input left-addon">
+                        <input id="lname" type="text" name="LastName" placeholder="Last Name" class="form-control" value="@ViewBag.Data.LastName" />
+                    </div>
+                    @{
+                        string cl = "";
+                        if (ViewBag.EmailExists == true)
+                        {
+                            cl = "text input align-input inner-addon left-addon has-error";
+                        }
+                        else
+                        {
+                            cl = "text input align-input inner-addon left-addon";
+                        }
+                        <div id="emaildiv" class="@cl">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            <input id="emailid" type="email" name="Email" placeholder="Email" class="form-control" value="@ViewBag.Data.Email" />
+                        </div>
+                    }
+                    @{
+                        cl = "";
+                        if (ViewBag.UsernameExists == true)
+                        {
+                            cl = "text input align-input inner-addon left-addon has-error";
+                        }
+                        else
+                        {
+                            cl = "text input align-input inner-addon left-addon";
+                        }
+                        <div id="usernamediv" class="@cl">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <input id="usernameid" type="text" name="Username" placeholder="Username" class="form-control" value="@ViewBag.Data.Username" />
+                        </div>
+                    }
+
+
+                    <div id="passdiv" class="text-input align-input inner-addon left-addon">
+                        <i class="glyphicon glyphicon-lock"></i>
+                        <input id="passid" type="password" name="Password" placeholder="Password" class="form-control" />
+                    </div>
+
+                    <div id="repassdiv" class="text-input align-input inner-addon left-addon">
+                        <i id="repassicon" class="glyphicon glyphicon-lock"></i>
+                        <input id="repassid" type="password" placeholder="Confirm Password" class="form-control" />
+                    </div>
+
+                    @{
+                        string text = "";
+                        cl = "";
+                        if (ViewBag.UsernameExists == true)
+                        {
+                            text = "Username already exists";
+                            cl = "alert alert-danger";
+                        }
+                        else if (ViewBag.EmailExists == true)
+                        {
+                            text = "Email already registered";
+                            cl = "alert alert-danger";
+                        }
+                        else
+                        {
+                            cl = "alert alert-danger sr-only";
+                        }
+                        <div id="alertdiv" class="align-input">
+                            <div class="@cl" id="passalert" role="alert">@text</div>
+                        </div>
+                    }
+
+
+
+                    <div class="align-input right">
+                        <p class="myriad-pro-font">Already have an account? <a href="/Home/Login">Sign in here.</a></p>
+                    </div>
+
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary btn-lg align-input">Create Account</button>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+
+</div>

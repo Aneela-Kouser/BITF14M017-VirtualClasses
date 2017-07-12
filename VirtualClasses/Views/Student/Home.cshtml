@@ -1,0 +1,74 @@
+﻿@model VirtualClasses.Models.Student
+@{
+    ViewBag.Title = "Home";
+}
+@{
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+<h1 class="myriad-pro-font">Active Classes</h1>
+<hr />
+<ul class="myriad-pro-font">
+    @{
+        List<VirtualClasses.Models.Course> active = (from x in Model.Courses
+                                                     where x.Active == true
+                                                     select x).ToList();
+        if (active.Count == 0)
+        {
+            <li>
+                <h4 class="myriad-pro-font">No Active Class</h4>
+            </li>
+            <hr />
+        }
+        else
+        {
+            foreach (var c in active)
+            {
+                <li>
+                    <h3 class="myriad-pro-font"><a href="/Student/Class?Id=@c.Id">@c.Title</a></h3>
+                    <h4 class="myriad-pro-font tab">Instructor: @c.Teacher.FirstName @c.Teacher.LastName</h4>
+                    <p class="tab myriad-pro-font">
+                        Total Quizzes: @c.Quizzes.Count<br />
+                        Total Assignments: @c.Assignments.Count<br />
+                        Total Announcements: @c.Announcements.Count<br />
+                        Total Discussions: @c.Discussions.Count
+                    </p>
+                </li>
+                <hr />
+            }
+        }
+    }
+</ul>
+
+<h1 class="myriad-pro-font">Inactive Classes</h1>
+<hr />
+<ul class="myriad-pro-font">
+
+    @{
+        List<VirtualClasses.Models.Course> inactive = (from x in Model.Courses
+                                                       where x.Active == false
+                                                       select x).ToList();
+        if (inactive.Count == 0)
+        {
+            <li>
+                <h4 class="myriad-pro-font">No Inactive Class</h4>
+            </li>
+        }
+        else
+        {
+            foreach (var c in inactive)
+            {
+                <li>
+                    <h3 class="myriad-pro-font"><a href="/Student/Class?Id=@c.Id">@c.Title</a></h3>
+                    <p class="tab myriad-pro-font">
+                        Total Quizzes: @c.Quizzes.Count<br />
+                        Total Assignments: @c.Assignments.Count<br />
+                        Total Announcements: @c.Announcements.Count<br />
+                        Total Discussions: @c.Discussions.Count
+                    </p>
+                </li>
+                <hr />
+            }
+        }
+    }
+</ul>

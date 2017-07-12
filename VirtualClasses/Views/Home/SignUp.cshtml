@@ -1,0 +1,103 @@
+﻿@model  VirtualClasses.Models.ViewModels.SignUpViewModel
+@{
+    ViewBag.Title = "SignUp";
+}
+<script src="~/Scripts/SignUp.js"></script>
+<div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="heading myriad-pro-font">Sign Up</h1>
+                 </div>
+            @{
+                string emailClass = "text-input align-input inner-addon left-addon";
+                string emailAlertClass = "alert alert-danger hidden";
+                if (Model.doesEmailExist)
+                {
+                    emailClass = "text-input align-input inner-addon left-addon has-error";
+                    emailAlertClass = "alert alert-danger";
+                }
+                string usernameClass = "text-input align-input inner-addon left-addon";
+                string usernameAlertClass = "alert alert-danger hidden";
+                if (Model.doesUsernameExist)
+                {
+                    usernameClass = "text-input align-input inner-addon left-addon has-error";
+                    usernameAlertClass = "alert alert-danger";
+                }
+                <div class="panel-body">
+                    <form id="signupform" class="form-horizontal" method="post" action="/Home/SignUp">
+                        <br />
+                        <div id="fnamediv" class="text-input align-input left-addon">
+                            <input id="fname" type="text" name="FirstName" placeholder="First Name" class="form-control" value="@Model.data.FirstName" />
+                        </div>
+
+                        <div id="fnamealertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="fnamealert" role="alert"></div>
+                        </div>
+
+                        <div id="lnamediv" class="text-input align-input left-addon">
+                            <input id="lname" type="text" name="LastName" placeholder="Last Name" class="form-control" value="@Model.data.LastName" />
+                        </div>
+
+                        <div id="lnamealertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="lnamealert" role="alert"></div>
+                        </div>
+
+                        <div id="emaildiv" class="@emailClass">
+                            <i class="glyphicon glyphicon-envelope"></i>
+                            <input id="emailid" type="email" name="Email" placeholder="Email" class="form-control" value="@Model.data.Email" />
+                        </div>
+
+                        <div id="emailalertdiv" class="align-input">
+                            <div class="@emailAlertClass" id="emailalert" role="alert">Email "@Model.data.Email" is already registered</div>
+                        </div>
+
+                        <div id="usernamediv" class="@usernameClass">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <input id="usernameid" type="text" name="Username" placeholder="Username" class="form-control" value="@Model.data.Username" />
+                        </div>
+
+                        <div id="useralertdiv" class="align-input">
+                            <div class="@usernameAlertClass" id="useralert" role="alert">Username "@Model.data.Username" already exists</div>
+                        </div>
+
+                        <div id="passdiv" class="text-input align-input inner-addon left-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            <input id="passid" type="password" name="Password" placeholder="Password" class="form-control" />
+                        </div>
+
+                        <div id="passalertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="passalert" role="alert"></div>
+                        </div>
+
+                        <div id="repassdiv" class="text-input align-input inner-addon left-addon">
+                            <i id="repassicon" class="glyphicon glyphicon-lock"></i>
+                            <input id="repassid" type="password" placeholder="Confirm Password" class="form-control" />
+                        </div>
+
+                        <div id="repassalertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="repassalert" role="alert"></div>
+                        </div>
+
+                        <div class="text-input align-input">
+                            <select name="Gender" class="form-control">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+
+                        
+                        <div class="center">
+                            <button type="submit" class="btn btn-primary btn-lg align-input">Create Account</button>
+                        </div>
+                        <br />
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+
+</div>

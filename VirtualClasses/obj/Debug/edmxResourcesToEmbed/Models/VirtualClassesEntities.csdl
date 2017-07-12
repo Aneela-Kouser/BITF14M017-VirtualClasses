@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VirtualClassesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="VirtualClassesDBModel.TeacherCourse" FromRole="Teacher" ToRole="Course" />
+  </EntityType>
+  <EntityContainer Name="VirtualClassesDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <EntitySet Name="Students" EntityType="VirtualClassesDBModel.Student" />
+    <EntitySet Name="Courses" EntityType="VirtualClassesDBModel.Course" />
+    <AssociationSet Name="StudentCourse" Association="VirtualClassesDBModel.StudentCourse">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="TeacherCourse" Association="VirtualClassesDBModel.TeacherCourse">
+      <End Role="Teacher" EntitySet="Teachers" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Courses" Relationship="VirtualClassesDBModel.StudentCourse" FromRole="Student" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <NavigationProperty Name="Students" Relationship="VirtualClassesDBModel.StudentCourse" FromRole="Course" ToRole="Student" />
+    <NavigationProperty Name="Teacher" Relationship="VirtualClassesDBModel.TeacherCourse" FromRole="Course" ToRole="Teacher" />
+    <Property Name="TeacherUsername" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="StudentCourse">
+    <End Type="VirtualClassesDBModel.Student" Role="Student" Multiplicity="*" />
+    <End Type="VirtualClassesDBModel.Course" Role="Course" Multiplicity="*" />
+  </Association>
+  <Association Name="TeacherCourse">
+    <End Type="VirtualClassesDBModel.Teacher" Role="Teacher" Multiplicity="1" />
+    <End Type="VirtualClassesDBModel.Course" Role="Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TeacherUsername" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

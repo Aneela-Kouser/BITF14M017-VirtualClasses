@@ -1,0 +1,42 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = "Enroll Students - " + Model.course.Title;
+}
+<script src="~/Scripts/EnrollStudents.js"></script>
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<hr />
+<div class="panel panel-default" style="opacity:0.8">
+    <div class="panel-heading">
+        <h3 class="myriad-pro-font tab">Enroll Student<small>(s)</small></h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal col-sm-4 tab" method="post" action="/Teacher/EnrollStudents" id="idform1">
+            <div class="form-group">
+                <label for="email" class="myriad-pro-font">Enter Student's Email</label>
+                <input class="form-control myriad-pro-font" id="emailid" placeholder="Student's Email" name="Email" type="text" />
+            </div>
+            <div id="emailalertdiv" class="align-input">
+                <div class="alert alert-danger hidden" style="margin-bottom:-5px;" id="emailalert" role="alert"></div>
+            </div>
+            <button class="btn btn-default myriad-pro-font" type="submit">Enroll Student</button>
+        </form>
+        <form id="uploadform" class="form-horizontal col-sm-6 tab" method="post" enctype="multipart/form-data" action="/Teacher/EnrollStudentsFromFile">
+            <div class="form-group align-input">
+                <label for="email" class="myriad-pro-font">Or Pick emails from file</label>
+                <div id="uploadid" class="input-group">
+                    <span class="input-group-btn">
+                        <span class="btn btn-default btn-file">
+                            Browse<input id="uploadfile" name="file1" type="file" accept="text/plain" />
+                        </span>
+                    </span>
+                    <input type="text" name="uploadtext" class="form-control" readonly>
+                </div>
+            </div>
+            <div id="uploadalertdiv" class="align-input">
+                <div class="alert alert-danger hidden" style="margin-bottom:-5px;" id="uploadalert" role="alert"></div>
+            </div>
+            <button class="btn btn-default myriad-pro-font" type="submit">Enroll Students</button>
+        </form>
+
+    </div>
+</div>

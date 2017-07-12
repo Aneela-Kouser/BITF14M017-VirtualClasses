@@ -1,0 +1,133 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/user.css">
+    <link rel="shortcut icon" type="image/x-icon" href="~/Images/logo.png" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <img src="~/Images/back.jpg" style="top:0px;left:0px;height:100%;width:100%;position:fixed;opacity:0.12;" />
+    <div class="page-body">
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <a class="navbar-brand" href="/Student/Home">Virtual Classes</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/Student/Profile">@Model.student.FirstName @Model.student.LastName</a></li>
+                        <li><a href="/Student/Home">Home</a></li>
+                        <li class="dropdown">
+                            <a class="navbar-icon dropdown-toggle" id="settings" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="glyphicon glyphicon-cog"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="settings">
+                                <li><a href="/Student/Profile">Profile</a></li>
+                                <li><a href="/Student/ChangePassword">Change Password</a></li>
+                                <li><a href="/Student/Logout">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="container-fluid">
+                <div class="row">
+
+                    <nav id="side" class="col-xs-3 bs-docs-sidebar hidden-print">
+                        <ul id="sidebar" class="nav nav-stacked fixed">
+                            <li class="active">
+                                <a>Quizzes</a>
+                                <ul class="nav nav-stacked">
+                                    @if (Model.course.Quizzes.Count == 0)
+                                    {
+                                        <li><a>No Quizzes</a></li>
+                                    }
+                                    else
+                                    {
+                                        foreach (var q in Model.course.Quizzes)
+                                        {
+                                            <li><a href="/Student/Quiz?Id=@q.Id">@q.Title</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Assignments</a>
+                                <ul class="nav nav-stacked">
+                                    @if (Model.course.Assignments.Count == 0)
+                                    {
+                                        <li><a>No Assignments</a></li>
+                                    }
+                                    else
+                                    {
+                                        foreach (var a in Model.course.Assignments)
+                                        {
+                                            <li><a href="/Student/Assignment?Id=@a.Id">@a.Title</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Announcements</a>
+                                <ul class="nav nav-stacked">
+                                    @if (Model.course.Announcements.Count == 0)
+                                    {
+                                        <li><a>No Announcements</a></li>
+                                    }
+                                    else
+                                    {
+                                        foreach (var a in Model.course.Announcements)
+                                        {
+                                            <li><a href="/Student/Announcement?Id=@a.Id">@a.Title</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                            <li>
+                                <a>Discussions</a>
+                                <ul class="nav nav-stacked">
+                                    @if (Model.course.Discussions.Count == 0)
+                                    {
+                                        <li><a>No Discussions</a></li>
+                                    }
+                                    else
+                                    {
+                                        foreach (var d in Model.course.Discussions)
+                                        {
+                                            <li><a href="/Student/Discussion?Id=@d.Id">@d.Title</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="col-xs-7 page-right">
+
+                        @RenderBody()
+
+                        <hr />
+                        <p>&copy; @DateTime.Now.Year - Virtual Classes</p>
+                        <br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

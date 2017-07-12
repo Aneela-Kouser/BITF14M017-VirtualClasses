@@ -1,0 +1,38 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = Model.course.Title;
+}
+
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<hr />
+
+@if (Model.course.Students.Count == 0){
+    <h3 class="myriad-pro-font tab">No Students Enrolled</h3>
+    if (Model.course.Active)
+    {
+        <a class="myriad-pro-font" style="margin-left:30px" href="/Teacher/EnrollStudents">Enroll Students here</a>
+    }
+}
+else
+{
+    <h3 class="myriad-pro-font">All Enrolled Students</h3>
+    <table class="table table-striped table-condensed table-hover myriad-pro-font">
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        @{
+            int i = 1;
+            foreach (var v in Model.course.Students)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@v.FirstName @v.LastName</td>
+                    <td>@v.Email</td>
+                </tr>
+                i++;
+            }
+        }
+    </table>
+}

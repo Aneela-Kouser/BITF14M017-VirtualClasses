@@ -1,0 +1,143 @@
+﻿@model VirtualClasses.Models.ViewModels.CompleteRegViewModel
+@{
+    ViewBag.Title = "Complete Your Registration";
+}
+
+@{
+    Layout = "~/Views/Shared/_LayoutAccounts.cshtml";
+}
+
+<script src="~/Scripts/StudentCompleteReg.js"></script>
+<div class="container">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="heading myriad-pro-font">Complete Your Registration</h1>
+
+            </div>
+            <div class="panel-body">
+                <p class="center myriad-pro-font">Check your Email for Email Confirmation PIN. If the Mail isn't in your Inbox, check your Spam too.</p>
+                <p class="myriad-pro-font center">Didn't recieve Email? <a href="/Student/ResendEmailConfirmation">Resend Confirmation Email</a></p>
+                <form id="completeRegForm" class="form-horizontal" method="post" action="/Student/CompleteRegistrationReq">
+                    <br />
+                    @{
+                        string emailConfirmDivClass = "text-input align-input left-addon inner-addon";
+                        string emailAlertClass = "alert alert-danger hidden";
+                        string usernameDivClass = "text-input align-input inner-addon left-addon";
+                        string userAlertClass = "alert alert-danger hidden";
+                        string PIN = "", first = "", last = "", phone = "", web = "", user = "";
+                        if (Model != null)
+                        {
+                            PIN = Model.Data.EmailConfirmationPIN;
+                            first = Model.Data.FirstName;
+                            last = Model.Data.LastName;
+                            phone = Model.Data.Mobile;
+                            web = Model.Data.Website;
+                            user = Model.Data.Username;
+                            if (Model.IsPinCorect)
+                            {
+                                emailConfirmDivClass = "text-input align-input left-addon inner-addon has-success";
+                            }
+                            else
+                            {
+                                emailConfirmDivClass = "text-input align-input left-addon inner-addon has-error";
+                                emailAlertClass = "alert alert-danger";
+                            }
+                            if (Model.IsUsernameCorrect)
+                            {
+                                usernameDivClass = "text-input align-input inner-addon left-addon has-success";
+                            }
+                            else
+                            {
+                                usernameDivClass = "text-input align-input inner-addon left-addon has-error";
+                                userAlertClass = "alert alert-danger";
+                            }
+                        }
+
+                        <div id="emailconfirmdiv" class="@emailConfirmDivClass">
+                            <i class="glyphicon glyphicon-tag"></i>
+                            <input id="emailconfirm" type="text" name="EmailConfirmationPIN" placeholder="Email Confirmation PIN" class="form-control" value="@PIN" />
+                        </div>
+
+                        <div id="emailconfirmalertdiv" class="align-input">
+                            <div class="@emailAlertClass" style="margin-bottom:10px;" id="emailconfirmalert" role="alert">Email Confirmation PIN Incorrect</div>
+                        </div>
+
+                        <div id="fnamediv" class="text-input align-input left-addon">
+                            <input id="fname" type="text" name="FirstName" placeholder="First Name" class="form-control" value="@first" />
+                        </div>
+
+                        <div id="fnamealertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="fnamealert" role="alert"></div>
+                        </div>
+
+                        <div id="lnamediv" class="text-input align-input left-addon">
+                            <input id="lname" type="text" name="LastName" value="@last" placeholder="Last Name" class="form-control" />
+                        </div>
+
+                        <div id="lnamealertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="lnamealert" role="alert"></div>
+                        </div>
+
+                        <div id="phonediv" class="inner-addon left-addon text-input align-input">
+                            <i class="glyphicon glyphicon-phone-alt"></i>
+                            <input type="text" name="Mobile" value="@phone" placeholder="Phone" class="form-control" />
+                        </div>
+
+                        <div id="phonealertdiv"></div>
+
+                        <div id="webdiv" class="inner-addon left-addon text-input align-input">
+                            <i class="glyphicon glyphicon-globe"></i>
+                            <input type="text" name="Website" value="@web" placeholder="Website" class="form-control" />
+                        </div>
+
+                        <div id="webalertdiv"></div>
+
+                        <div id="usernamediv" class="@usernameDivClass">
+                            <i class="glyphicon glyphicon-user"></i>
+                            <input id="usernameid" type="text" name="Username" value="@user" placeholder="Username" class="form-control" />
+                        </div>
+
+                        <div id="useralertdiv" class="align-input">
+                            <div class="@userAlertClass" id="useralert" role="alert">Username "@user" already exists</div>
+                        </div>
+
+                        <div id="passdiv" class="text-input align-input inner-addon left-addon">
+                            <i class="glyphicon glyphicon-lock"></i>
+                            <input id="passid" type="password" name="Password" placeholder="Password" class="form-control" />
+                        </div>
+
+                        <div id="passalertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="passalert" role="alert"></div>
+                        </div>
+
+                        <div id="repassdiv" class="text-input align-input inner-addon left-addon">
+                            <i id="repassicon" class="glyphicon glyphicon-lock"></i>
+                            <input id="repassid" type="password" placeholder="Confirm Password" class="form-control" />
+                        </div>
+
+                        <div id="repassalertdiv" class="align-input">
+                            <div class="alert alert-danger hidden" id="repassalert" role="alert"></div>
+                        </div>
+
+                        <div class="text-input align-input">
+                            <select name="Gender" class="form-control">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    }
+                    <div class="center">
+                        <button type="submit" class="btn btn-primary btn-lg align-input proceed">Proceed</button>
+                    </div>
+                    <br />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+    </div>
+
+</div>
+

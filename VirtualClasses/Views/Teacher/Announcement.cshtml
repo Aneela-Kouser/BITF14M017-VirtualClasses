@@ -1,0 +1,10 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = Model.announcement.Title + " - " + Model.course.Title;
+}
+
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<h3 class="myriad-pro-font">@Model.announcement.Title <small class="tab">@Model.announcement.Time</small></h3>
+<br />
+
+<p class="myriad-pro-font tab">@Model.announcement.Body</p>

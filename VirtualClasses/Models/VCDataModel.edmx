@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VCDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="VCDataModelStoreContainer">
+    <EntitySet Name="Students" EntityType="VCDataModel.Store.Students" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Teachers" EntityType="VCDataModel.Store.Teachers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Courses" EntityType="VCDataModel.Store.Courses" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Quizs" EntityType="VCDataModel.Store.Quizs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuizQuestions" EntityType="VCDataModel.Store.QuizQuestions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuizSolutions" EntityType="VCDataModel.Store.QuizSolutions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="QuizQuestionSolutions" EntityType="VCDataModel.Store.QuizQuestionSolutions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Assignments" EntityType="VCDataModel.Store.Assignments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AssignmentQuestions" EntityType="VCDataModel.Store.AssignmentQuestions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Announcements" EntityType="VCDataModel.Store.Announcements" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Discussions" EntityType="VCDataModel.Store.Discussions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DiscussionComments" EntityType="VCDataModel.Store.DiscussionComments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CourseStudent" EntityType="VCDataModel.Store.CourseStudent" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CourseTeacher" Association="VCDataModel.Store.CourseTeacher">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Teacher" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudent_Course" Association="VCDataModel.Store.FK_CourseStudent_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CourseStudent_Student" Association="VCDataModel.Store.FK_CourseStudent_Student">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="CourseStudent" EntitySet="CourseStudent" />
+    </AssociationSet>
+    <AssociationSet Name="CourseQuiz" Association="VCDataModel.Store.CourseQuiz">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Quiz" EntitySet="Quizs" />
+    </AssociationSet>
+    <AssociationSet Name="QuizQuizQuestion" Association="VCDataModel.Store.QuizQuizQuestion">
+      <End Role="Quiz" EntitySet="Quizs" />
+      <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="QuizQuizSolution" Association="VCDataModel.Store.QuizQuizSolution">
+      <End Role="Quiz" EntitySet="Quizs" />
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+    </AssociationSet>
+    <AssociationSet Name="QuizSolutionStudent" Association="VCDataModel.Store.QuizSolutionStudent">
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="QuizSolutionQuizQuestionSolution" Association="VCDataModel.Store.QuizSolutionQuizQuestionSolution">
+      <End Role="QuizSolution" EntitySet="QuizSolutions" />
+      <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+    </AssociationSet>
+    <AssociationSet Name="QuizQuestionQuizQuestionSolution" Association="VCDataModel.Store.QuizQuestionQuizQuestionSolution">
+      <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+      <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+    </AssociationSet>
+    <AssociationSet Name="CourseAssignment" Association="VCDataModel.Store.CourseAssignment">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Assignment" EntitySet="Assignments" />
+    </AssociationSet>
+    <AssociationSet Name="AssignmentAssignmentQuestion" Association="VCDataModel.Store.AssignmentAssignmentQuestion">
+      <End Role="Assignment" EntitySet="Assignments" />
+      <End Role="AssignmentQuestion" EntitySet="AssignmentQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="CourseAnnouncement" Association="VCDataModel.Store.CourseAnnouncement">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Announcement" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="CourseDiscussion" Association="VCDataModel.Store.CourseDiscussion">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Discussion" EntitySet="Discussions" />
+    </AssociationSet>
+    <AssociationSet Name="DiscussionDiscussionComment" Association="VCDataModel.Store.DiscussionDiscussionComment">
+      <End Role="Discussion" EntitySet="Discussions" />
+      <End Role="DiscussionComment" EntitySet="DiscussionComments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Mobile" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Website" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PasswordResetPIN" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="EmailConfirmationPIN" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mobile" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Website" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="PasswordResetPIN" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="EmailConfirmationPIN" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Courses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TeacherId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Quizs">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="TotalMarks" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuizQuestions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OptionA" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OptionB" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OptionC" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OptionD" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CorrectOption" Type="int" Nullable="false" />
+    <Property Name="Marks" Type="int" Nullable="false" />
+    <Property Name="QuizId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuizSolutions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuizId" Type="int" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+    <Property Name="Correct" Type="int" Nullable="false" />
+    <Property Name="Marks" Type="int" Nullable="false" />
+    <Property Name="Attempted" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuizQuestionSolutions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SelectedOption" Type="int" Nullable="true" />
+    <Property Name="QuizSolutionId" Type="int" Nullable="false" />
+    <Property Name="IsCorrect" Type="bit" Nullable="false" />
+    <Property Name="QuizQuestionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Assignments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AssignmentQuestions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AssignmentId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Announcements">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Time" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Discussions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DiscussionComments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DiscussionId" Type="int" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Time" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CourseStudent">
+    <Key>
+      <PropertyRef Name="Courses_Id" />
+      <PropertyRef Name="Students_Id" />
+    </Key>
+    <Property Name="Courses_Id" Type="int" Nullable="false" />
+    <Property Name="Students_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CourseTeacher">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="*" />
+    <End Role="Teacher" Type="VCDataModel.Store.Teachers" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseQuiz">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="1" />
+    <End Role="Quiz" Type="VCDataModel.Store.Quizs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Quiz">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizQuizQuestion">
+    <End Role="Quiz" Type="VCDataModel.Store.Quizs" Multiplicity="1" />
+    <End Role="QuizQuestion" Type="VCDataModel.Store.QuizQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestion">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizQuizSolution">
+    <End Role="Quiz" Type="VCDataModel.Store.Quizs" Multiplicity="1" />
+    <End Role="QuizSolution" Type="VCDataModel.Store.QuizSolutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizSolution">
+        <PropertyRef Name="QuizId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizSolutionStudent">
+    <End Role="QuizSolution" Type="VCDataModel.Store.QuizSolutions" Multiplicity="*" />
+    <End Role="Student" Type="VCDataModel.Store.Students" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizSolution">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizSolutionQuizQuestionSolution">
+    <End Role="QuizSolution" Type="VCDataModel.Store.QuizSolutions" Multiplicity="1" />
+    <End Role="QuizQuestionSolution" Type="VCDataModel.Store.QuizQuestionSolutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizSolution">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestionSolution">
+        <PropertyRef Name="QuizSolutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="QuizQuestionQuizQuestionSolution">
+    <End Role="QuizQuestion" Type="VCDataModel.Store.QuizQuestions" Multiplicity="1" />
+    <End Role="QuizQuestionSolution" Type="VCDataModel.Store.QuizQuestionSolutions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QuizQuestion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuizQuestionSolution">
+        <PropertyRef Name="QuizQuestionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseAssignment">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="1" />
+    <End Role="Assignment" Type="VCDataModel.Store.Assignments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AssignmentAssignmentQuestion">
+    <End Role="Assignment" Type="VCDataModel.Store.Assignments" Multiplicity="1" />
+    <End Role="AssignmentQuestion" Type="VCDataModel.Store.AssignmentQuestions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Assignment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AssignmentQuestion">
+        <PropertyRef Name="AssignmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseAnnouncement">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="1" />
+    <End Role="Announcement" Type="VCDataModel.Store.Announcements" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CourseDiscussion">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="1" />
+    <End Role="Discussion" Type="VCDataModel.Store.Discussions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Discussion">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DiscussionDiscussionComment">
+    <End Role="Discussion" Type="VCDataModel.Store.Discussions" Multiplicity="1" />
+    <End Role="DiscussionComment" Type="VCDataModel.Store.DiscussionComments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Discussion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DiscussionComment">
+        <PropertyRef Name="DiscussionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudent_Course">
+    <End Role="Course" Type="VCDataModel.Store.Courses" Multiplicity="1" />
+    <End Role="CourseStudent" Type="VCDataModel.Store.CourseStudent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="Courses_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CourseStudent_Student">
+    <End Role="CourseStudent" Type="VCDataModel.Store.CourseStudent" Multiplicity="*" />
+    <End Role="Student" Type="VCDataModel.Store.Students" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="CourseStudent">
+        <PropertyRef Name="Students_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="VCDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="VCDataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Students" EntityType="VCDataModel.Student" />
+          <EntitySet Name="Teachers" EntityType="VCDataModel.Teacher" />
+          <EntitySet Name="Courses" EntityType="VCDataModel.Course" />
+          <EntitySet Name="Quizs" EntityType="VCDataModel.Quiz" />
+          <AssociationSet Name="CourseTeacher" Association="VCDataModel.CourseTeacher">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="CourseStudent" Association="VCDataModel.CourseStudent">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="CourseQuiz" Association="VCDataModel.CourseQuiz">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Quiz" EntitySet="Quizs" />
+          </AssociationSet>
+          <EntitySet Name="QuizQuestions" EntityType="VCDataModel.QuizQuestion" />
+          <AssociationSet Name="QuizQuizQuestion" Association="VCDataModel.QuizQuizQuestion">
+            <End Role="Quiz" EntitySet="Quizs" />
+            <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+          </AssociationSet>
+          <EntitySet Name="QuizSolutions" EntityType="VCDataModel.QuizSolution" />
+          <AssociationSet Name="QuizQuizSolution" Association="VCDataModel.QuizQuizSolution">
+            <End Role="Quiz" EntitySet="Quizs" />
+            <End Role="QuizSolution" EntitySet="QuizSolutions" />
+          </AssociationSet>
+          <EntitySet Name="QuizQuestionSolutions" EntityType="VCDataModel.QuizQuestionSolution" />
+          <AssociationSet Name="QuizSolutionStudent" Association="VCDataModel.QuizSolutionStudent">
+            <End Role="QuizSolution" EntitySet="QuizSolutions" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="QuizSolutionQuizQuestionSolution" Association="VCDataModel.QuizSolutionQuizQuestionSolution">
+            <End Role="QuizSolution" EntitySet="QuizSolutions" />
+            <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+          </AssociationSet>
+          <AssociationSet Name="QuizQuestionQuizQuestionSolution" Association="VCDataModel.QuizQuestionQuizQuestionSolution">
+            <End Role="QuizQuestion" EntitySet="QuizQuestions" />
+            <End Role="QuizQuestionSolution" EntitySet="QuizQuestionSolutions" />
+          </AssociationSet>
+          <EntitySet Name="Assignments" EntityType="VCDataModel.Assignment" />
+          <AssociationSet Name="CourseAssignment" Association="VCDataModel.CourseAssignment">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Assignment" EntitySet="Assignments" />
+          </AssociationSet>
+          <EntitySet Name="AssignmentQuestions" EntityType="VCDataModel.AssignmentQuestion" />
+          <AssociationSet Name="AssignmentAssignmentQuestion" Association="VCDataModel.AssignmentAssignmentQuestion">
+            <End Role="Assignment" EntitySet="Assignments" />
+            <End Role="AssignmentQuestion" EntitySet="AssignmentQuestions" />
+          </AssociationSet>
+          <EntitySet Name="Announcements" EntityType="VCDataModel.Announcement" />
+          <AssociationSet Name="CourseAnnouncement" Association="VCDataModel.CourseAnnouncement">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Announcement" EntitySet="Announcements" />
+          </AssociationSet>
+          <EntitySet Name="Discussions" EntityType="VCDataModel.Discussion" />
+          <AssociationSet Name="CourseDiscussion" Association="VCDataModel.CourseDiscussion">
+            <End Role="Course" EntitySet="Courses" />
+            <End Role="Discussion" EntitySet="Discussions" />
+          </AssociationSet>
+          <EntitySet Name="DiscussionComments" EntityType="VCDataModel.DiscussionComment" />
+          <AssociationSet Name="DiscussionDiscussionComment" Association="VCDataModel.DiscussionDiscussionComment">
+            <End Role="Discussion" EntitySet="Discussions" />
+            <End Role="DiscussionComment" EntitySet="DiscussionComments" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="true" />
+          <Property Name="LastName" Type="String" Nullable="true" />
+          <Property Name="Username" Type="String" Nullable="true" />
+          <Property Name="Password" Type="String" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="VCDataModel.CourseStudent" FromRole="Student" ToRole="Course" />
+          <NavigationProperty Name="QuizSolutions" Relationship="VCDataModel.QuizSolutionStudent" FromRole="Student" ToRole="QuizSolution" />
+          <Property Name="Gender" Type="String" Nullable="true" />
+          <Property Name="Mobile" Type="String" Nullable="true" />
+          <Property Name="Website" Type="String" Nullable="true" />
+          <Property Name="PasswordResetPIN" Type="String" Nullable="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="EmailConfirmationPIN" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Courses" Relationship="VCDataModel.CourseTeacher" FromRole="Teacher" ToRole="Course" />
+          <Property Name="Gender" Type="String" Nullable="false" />
+          <Property Name="Mobile" Type="String" Nullable="true" />
+          <Property Name="Website" Type="String" Nullable="true" />
+          <Property Name="PasswordResetPIN" Type="String" Nullable="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="EmailConfirmationPIN" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Course">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <NavigationProperty Name="Teacher" Relationship="VCDataModel.CourseTeacher" FromRole="Course" ToRole="Teacher" />
+          <Property Name="TeacherId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="VCDataModel.CourseStudent" FromRole="Course" ToRole="Student" />
+          <NavigationProperty Name="Quizzes" Relationship="VCDataModel.CourseQuiz" FromRole="Course" ToRole="Quiz" />
+          <NavigationProperty Name="Assignments" Relationship="VCDataModel.CourseAssignment" FromRole="Course" ToRole="Assignment" />
+          <NavigationProperty Name="Announcements" Relationship="VCDataModel.CourseAnnouncement" FromRole="Course" ToRole="Announcement" />
+          <NavigationProperty Name="Discussions" Relationship="VCDataModel.CourseDiscussion" FromRole="Course" ToRole="Discussion" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Course" Relationship="VCDataModel.CourseQuiz" FromRole="Quiz" ToRole="Course" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="true" />
+          <Property Name="TotalMarks" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="VCDataModel.QuizQuizQuestion" FromRole="Quiz" ToRole="QuizQuestion" />
+          <NavigationProperty Name="Solutions" Relationship="VCDataModel.QuizQuizSolution" FromRole="Quiz" ToRole="QuizSolution" />
+        </EntityType>
+        <Association Name="CourseTeacher">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="*" />
+          <End Type="VCDataModel.Teacher" Role="Teacher" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Teacher">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Course">
+              <PropertyRef Name="TeacherId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CourseStudent">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="*" />
+          <End Type="VCDataModel.Student" Role="Student" Multiplicity="*" />
+        </Association>
+        <Association Name="CourseQuiz">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Quiz">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="QuizQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" Nullable="false" />
+          <Property Name="OptionA" Type="String" Nullable="false" />
+          <Property Name="OptionB" Type="String" Nullable="false" />
+          <Property Name="OptionC" Type="String" Nullable="false" />
+          <Property Name="OptionD" Type="String" Nullable="false" />
+          <Property Name="CorrectOption" Type="Int32" Nullable="false" />
+          <Property Name="Marks" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Quiz" Relationship="VCDataModel.QuizQuizQuestion" FromRole="QuizQuestion" ToRole="Quiz" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Solutions" Relationship="VCDataModel.QuizQuestionQuizQuestionSolution" FromRole="QuizQuestion" ToRole="QuizQuestionSolution" />
+        </EntityType>
+        <Association Name="QuizQuizQuestion">
+          <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="1" />
+          <End Type="VCDataModel.QuizQuestion" Role="QuizQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuizQuestion">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="QuizSolution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Quiz" Relationship="VCDataModel.QuizQuizSolution" FromRole="QuizSolution" ToRole="Quiz" />
+          <Property Name="QuizId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="VCDataModel.QuizSolutionStudent" FromRole="QuizSolution" ToRole="Student" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="QuestionSolutions" Relationship="VCDataModel.QuizSolutionQuizQuestionSolution" FromRole="QuizSolution" ToRole="QuizQuestionSolution" />
+          <Property Name="Correct" Type="Int32" Nullable="false" />
+          <Property Name="Marks" Type="Int32" Nullable="false" />
+          <Property Name="Attempted" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="QuizQuizSolution">
+          <End Type="VCDataModel.Quiz" Role="Quiz" Multiplicity="1" />
+          <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuizSolution">
+              <PropertyRef Name="QuizId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="QuizQuestionSolution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SelectedOption" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="QuizSolution" Relationship="VCDataModel.QuizSolutionQuizQuestionSolution" FromRole="QuizQuestionSolution" ToRole="QuizSolution" />
+          <Property Name="QuizSolutionId" Type="Int32" Nullable="false" />
+          <Property Name="IsCorrect" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="VCDataModel.QuizQuestionQuizQuestionSolution" FromRole="QuizQuestionSolution" ToRole="QuizQuestion" />
+          <Property Name="QuizQuestionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="QuizSolutionStudent">
+          <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="*" />
+          <End Type="VCDataModel.Student" Role="Student" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuizSolution">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuizSolutionQuizQuestionSolution">
+          <End Type="VCDataModel.QuizSolution" Role="QuizSolution" Multiplicity="1" />
+          <End Type="VCDataModel.QuizQuestionSolution" Role="QuizQuestionSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuizSolution">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuizQuestionSolution">
+              <PropertyRef Name="QuizSolutionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="QuizQuestionQuizQuestionSolution">
+          <End Type="VCDataModel.QuizQuestion" Role="QuizQuestion" Multiplicity="1" />
+          <End Type="VCDataModel.QuizQuestionSolution" Role="QuizQuestionSolution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuizQuestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="QuizQuestionSolution">
+              <PropertyRef Name="QuizQuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Assignment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Course" Relationship="VCDataModel.CourseAssignment" FromRole="Assignment" ToRole="Course" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Content" Type="String" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="VCDataModel.AssignmentAssignmentQuestion" FromRole="Assignment" ToRole="AssignmentQuestion" />
+        </EntityType>
+        <Association Name="CourseAssignment">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="VCDataModel.Assignment" Role="Assignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Assignment">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AssignmentQuestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Question" Type="String" Nullable="false" />
+          <NavigationProperty Name="Assignment" Relationship="VCDataModel.AssignmentAssignmentQuestion" FromRole="AssignmentQuestion" ToRole="Assignment" />
+          <Property Name="AssignmentId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AssignmentAssignmentQuestion">
+          <End Type="VCDataModel.Assignment" Role="Assignment" Multiplicity="1" />
+          <End Type="VCDataModel.AssignmentQuestion" Role="AssignmentQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assignment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AssignmentQuestion">
+              <PropertyRef Name="AssignmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="VCDataModel.CourseAnnouncement" FromRole="Announcement" ToRole="Course" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Time" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="CourseAnnouncement">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="VCDataModel.Announcement" Role="Announcement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Announcement">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Discussion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Body" Type="String" Nullable="false" />
+          <NavigationProperty Name="Course" Relationship="VCDataModel.CourseDiscussion" FromRole="Discussion" ToRole="Course" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="VCDataModel.DiscussionDiscussionComment" FromRole="Discussion" ToRole="DiscussionComment" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" />
+          <Property Name="Time" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="CourseDiscussion">
+          <End Type="VCDataModel.Course" Role="Course" Multiplicity="1" />
+          <End Type="VCDataModel.Discussion" Role="Discussion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Course">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Discussion">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DiscussionComment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Body" Type="String" Nullable="false" />
+          <NavigationProperty Name="Discussion" Relationship="VCDataModel.DiscussionDiscussionComment" FromRole="DiscussionComment" ToRole="Discussion" />
+          <Property Name="DiscussionId" Type="Int32" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" />
+          <Property Name="Time" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="DiscussionDiscussionComment">
+          <End Type="VCDataModel.Discussion" Role="Discussion" Multiplicity="1" />
+          <End Type="VCDataModel.DiscussionComment" Role="DiscussionComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Discussion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DiscussionComment">
+              <PropertyRef Name="DiscussionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VCDataModelStoreContainer" CdmEntityContainer="VCDataModelContainer">
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Student)">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="PasswordResetPIN" ColumnName="PasswordResetPIN" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="EmailConfirmationPIN" ColumnName="EmailConfirmationPIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Teacher)">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="PasswordResetPIN" ColumnName="PasswordResetPIN" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="EmailConfirmationPIN" ColumnName="EmailConfirmationPIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Course)">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quizs">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Quiz)">
+        <MappingFragment StoreEntitySet="Quizs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="TotalMarks" ColumnName="TotalMarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuizQuestions">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.QuizQuestion)">
+        <MappingFragment StoreEntitySet="QuizQuestions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="OptionA" ColumnName="OptionA" />
+          <ScalarProperty Name="OptionB" ColumnName="OptionB" />
+          <ScalarProperty Name="OptionC" ColumnName="OptionC" />
+          <ScalarProperty Name="OptionD" ColumnName="OptionD" />
+          <ScalarProperty Name="CorrectOption" ColumnName="CorrectOption" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuizSolutions">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.QuizSolution)">
+        <MappingFragment StoreEntitySet="QuizSolutions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuizId" ColumnName="QuizId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Correct" ColumnName="Correct" />
+          <ScalarProperty Name="Marks" ColumnName="Marks" />
+          <ScalarProperty Name="Attempted" ColumnName="Attempted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuizQuestionSolutions">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.QuizQuestionSolution)">
+        <MappingFragment StoreEntitySet="QuizQuestionSolutions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SelectedOption" ColumnName="SelectedOption" />
+          <ScalarProperty Name="QuizSolutionId" ColumnName="QuizSolutionId" />
+          <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+          <ScalarProperty Name="QuizQuestionId" ColumnName="QuizQuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Assignments">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Assignment)">
+        <MappingFragment StoreEntitySet="Assignments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignmentQuestions">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.AssignmentQuestion)">
+        <MappingFragment StoreEntitySet="AssignmentQuestions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="AssignmentId" ColumnName="AssignmentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Announcement)">
+        <MappingFragment StoreEntitySet="Announcements">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Discussions">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.Discussion)">
+        <MappingFragment StoreEntitySet="Discussions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DiscussionComments">
+      <EntityTypeMapping TypeName="IsTypeOf(VCDataModel.DiscussionComment)">
+        <MappingFragment StoreEntitySet="DiscussionComments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="DiscussionId" ColumnName="DiscussionId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CourseStudent" TypeName="VCDataModel.CourseStudent" StoreEntitySet="CourseStudent">
+      <EndProperty Name="Course">
+        <ScalarProperty Name="Id" ColumnName="Courses_Id" />
+      </EndProperty>
+      <EndProperty Name="Student">
+        <ScalarProperty Name="Id" ColumnName="Students_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

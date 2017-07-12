@@ -1,0 +1,78 @@
+﻿@model VirtualClasses.Models.ViewModels.StudentCourseViewModel
+@{
+    ViewBag.Title = Model.quiz.Title + " - " + Model.course.Title;
+}
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<h3 class="myriad-pro-font">@Model.quiz.Title</h3>
+<h4 class="myriad-pro-font">- @Model.quiz.Content</h4>
+<p class="myriad-pro-font">Total Questions: @Model.quiz.Questions.Count<br />Total Marks: @Model.quiz.TotalMarks</p>
+<div>
+    <hr />
+
+    @if (Model.quiz.Questions.Count != 0)
+    {
+        int i = 0;
+        <form id="form1" method="post" action="/Student/SubmitQuiz">
+            <input type="hidden" id="total" name="TotalQuestions" value="@Model.quiz.Questions.Count" />
+            @foreach (var question in Model.quiz.Questions)
+            {
+                i++;
+                string answer = "Answer" + i;
+                string questionId = "QuestionId" + i;
+                string temp = question.Question.Replace("\r", "");
+                string[] q = temp.Split('\n');
+                <h3 class="myriad-pro-font">Question # @i</h3>
+                <p class="myriad-pro-font tab" id="question">
+                    @foreach (var s in q)
+                    {
+                        @s<br />
+                    }
+                </p>
+                <input type="hidden" name="@questionId" value="@question.Id" />
+                <div class="radio tab">
+                    <label class="myriad-pro-font">
+                        <input type="radio" name="@answer" value="1" />
+                        @question.OptionA
+                    </label>
+                </div>
+                <div class="radio tab">
+                    <label class="myriad-pro-font">
+                        <input type="radio" name="@answer" value="2" />
+                        @question.OptionB
+                    </label>
+                </div>
+                <div class="radio tab">
+                    <label class="myriad-pro-font">
+                        <input type="radio" name="@answer" value="3" />
+                        @question.OptionC
+                    </label>
+                </div>
+                <div class="radio tab">
+                    <label class="myriad-pro-font">
+                        <input type="radio" name="@answer" value="4" />
+                        @question.OptionD
+                    </label>
+                </div>
+                <script>
+                    $('input:radio[name="@answer"]').change(function () {
+                        $('input:radio[name="@answer"]').attr('disabled', true);
+                    });
+                </script>
+            }
+
+            <button class="btn btn-default" style="background-color:lightgrey" type="submit">Submit</button>
+        </form>
+        <script>
+            $("#form1").submit(function () {
+                var total = parseInt($("#total").val());
+                for (i = 1; i <= total; i++) {
+                    $('input:radio[name="Answer' + i + '"]').attr('disabled', false);
+                }
+            });
+        </script>
+    }
+    else
+    {
+        <p class="myriad-pro-font tab">No Questions</p>
+    }
+</div>

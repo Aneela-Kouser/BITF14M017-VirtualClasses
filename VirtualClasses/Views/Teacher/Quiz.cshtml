@@ -1,0 +1,33 @@
+﻿@model VirtualClasses.Models.ViewModels.TeacherCourseViewModel
+@{
+    ViewBag.Title = Model.quiz.Title + " - " + Model.course.Title;
+}
+<h1 class="myriad-pro-font"><a href="/Teacher/Class?Id=@Model.course.Id">@Model.course.Title</a></h1>
+<h3 class="myriad-pro-font">@Model.quiz.Title</h3>
+<h4 class="myriad-pro-font">- @Model.quiz.Content</h4>
+<p class="myriad-pro-font">Total Marks: @Model.quiz.TotalMarks</p>
+@{
+    int i = 0;
+    foreach (var ques in Model.quiz.Questions)
+    {
+        i++;
+        string temp = ques.Question;
+        temp = temp.Replace("\r", "");
+        string[] tok = temp.Split('\n');
+        <hr />
+        <h3 class="myriad-pro-font">Question @i <small class="tab">Marks: @ques.Marks</small></h3>
+        <p class="myriad-pro-font tab">
+            @foreach (var abc in tok)
+            {
+                @abc<br />
+            }
+        </p>
+        <ol class="myriad-pro-font tab">
+            <li>@ques.OptionA</li>
+            <li>@ques.OptionB</li>
+            <li>@ques.OptionC</li>
+            <li>@ques.OptionD</li>
+        </ol>
+        <p class="myriad-pro-font tab">Correct Answer: @ques.CorrectOption</p>
+    }
+}
